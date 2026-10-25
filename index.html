@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GSSC Services Today</title>
+<style>
+:root{
+  --bg:#f7f6f2; --panel:#ffffff; --ink:#1d1d1b; --muted:#6b6a65; --line:#d9d6cc; --link:#1f5fa8;
+  --cust:#e6f3ff; --front:#f0fff4; --front-b:#48bb78; --back:#fef5e7; --back-b:#c9a227; --sys:#e6fffa;
+  --tab:#ece9e0; --tab-on:#1d1d1b; --tab-on-ink:#fff;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#161614; --panel:#1f1f1c; --ink:#eceae4; --muted:#a3a19a; --line:#3a3933; --link:#90cdf4;
+  --cust:#132637; --front:#14291c; --back:#2d2614; --sys:#122b29;
+  --tab:#2a2925; --tab-on:#eceae4; --tab-on-ink:#161614;
+}}
+:root[data-theme="dark"]{
+  --bg:#161614; --panel:#1f1f1c; --ink:#eceae4; --muted:#a3a19a; --line:#3a3933; --link:#90cdf4;
+  --cust:#132637; --front:#14291c; --back:#2d2614; --sys:#122b29;
+  --tab:#2a2925; --tab-on:#eceae4; --tab-on-ink:#161614;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.45}
+a{color:var(--link)}
+.wrap{max-width:1560px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:26px;margin:0 0 8px}
+.intro{max-width:780px;font-size:15px;margin:0 0 10px}
+.intro-list{max-width:780px;font-size:15px;margin:0 0 12px;padding-left:20px}.intro-list li{margin:0 0 4px}
+.small{max-width:780px;color:var(--muted);font-size:13px;margin:0 0 10px}
+.next{font-size:15px;font-weight:600;margin:0 0 20px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.tabs button{border:1px solid var(--line);background:var(--tab);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:14px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--tab-on);color:var(--tab-on-ink);border-color:var(--tab-on)}
+.panel{display:none}.panel.on{display:block}
+.who{font-size:14px;max-width:900px;margin:0 0 12px}
+.hint{display:none;color:var(--ink);font-size:13px;margin:-4px 0 8px}
+@media(max-width:1259px){.hint{display:block}}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.grid{display:grid;grid-template-columns:140px repeat(var(--n),minmax(154px,1fr));min-width:calc(140px + var(--n) * 154px)}
+.ph{padding:10px 12px;font-weight:700;font-size:14px;border-bottom:2px solid var(--line);background:var(--panel)}
+.lab{padding:12px;font-weight:600;font-size:13px;border-right:1px solid var(--line);position:sticky;left:0;z-index:1}
+.lab small{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:2px}
+.grid>.ph:first-child{position:sticky;left:0;z-index:2}
+.lineLab{grid-column:1/-1;font-size:11px;color:var(--muted);padding:3px 12px;background:var(--panel);border-top:1px dashed var(--line)}
+.lineLab span{position:sticky;left:12px}
+@media(max-width:600px){.grid{grid-template-columns:96px repeat(var(--n),minmax(170px,1fr));min-width:calc(96px + var(--n) * 170px)}.lab{padding:10px 8px;font-size:12px}}
+.cell{padding:10px 12px;border-right:1px solid var(--line);font-size:12.5px}
+.cell ul{margin:0;padding-left:15px}.cell li{margin:0 0 5px}
+.L1{background:var(--cust)}.L2{background:var(--front)}.L3{background:var(--back)}.L4{background:var(--sys)}
+.vis{border-top:2px dashed var(--front-b)}.int{border-top:2px dashed var(--back-b)}
+li.tbc{color:var(--muted);font-style:italic}
+.notes{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+@media(min-width:900px){.notes{grid-template-columns:3fr 2fr}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.box h3{margin:0 0 8px;font-size:16px}.box ul{margin:0;padding-left:20px;font-size:14px}.box li{margin:0 0 6px}
+.box.src ul{font-size:13px}
+.foot{margin-top:24px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>How four GSSC services run today</h1>
+  <p class="intro">These maps show how UNICEF's Global Shared Services Centre (GSSC) in Budapest runs four of its services: recruitment, consultant contracts, travel and offboarding.</p>
+  <ul class="intro-list">
+    <li>Each map is a service blueprint: what the user does in the top row, what GSSC staff do below it, and the systems underneath.</li>
+    <li>I built them from public documents: job postings, audit reports, UN rules and the GSSC's annual report. I have not spoken to anyone at UNICEF, so every step needs checking with the team that runs it once the project starts.</li>
+    <li>"To confirm" marks a step the documents don't describe. System names are as each document gives them, so two names may mean the same system.</li>
+  </ul>
+  <p class="small">I made this as an applicant for the Service Design Investment Project Manager consultancy. UNICEF did not ask for it and has not endorsed it.</p>
+  <p class="next"><a href="approach.html">How I would run the 12-month project</a></p>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-p="ras">Recruitment</button>
+    <button role="tab" aria-selected="false" data-p="ics">Consultant contracts</button>
+    <button role="tab" aria-selected="false" data-p="trv">Travel</button>
+    <button role="tab" aria-selected="false" data-p="off">Offboarding</button>
+  </div>
+
+<!-- ================= RECRUITMENT ================= -->
+<section class="panel on" id="ras">
+  <p class="who">The GSSC's recruitment team is called Recruitment Administrative Services. Its users are hiring offices and their managers, interview panels, People and Culture business partners, and candidates. The team follows UNICEF's 2024 staff selection procedure, and is growing from a pilot to cover offices worldwide.</p>
+  <p class="hint">Scroll the table sideways to see all seven steps →</p>
+  <div class="scroll"><div class="grid" style="--n:7">
+    <div class="ph"></div>
+    <div class="ph">1. Need raised</div>
+    <div class="ph">2. Vacancy posted</div>
+    <div class="ph">3. Longlist</div>
+    <div class="ph">4. Tests and interviews</div>
+    <div class="ph">5. References</div>
+    <div class="ph">6. Approval and checks</div>
+    <div class="ph">7. Result and hand-over</div>
+
+    <div class="lab L1">User<small>What the user does</small></div>
+    <div class="cell L1"><ul><li>The hiring office asks to fill a post</li></ul></div>
+    <div class="cell L1"><ul><li>Candidates apply in the Talent Management System</li></ul></div>
+    <div class="cell L1"><ul><li>The hiring manager may do a short desk review or talk informally with eligible candidates</li></ul></div>
+    <div class="cell L1"><ul><li>Candidates take online tests and a panel interview</li></ul></div>
+    <div class="cell L1"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L1"><ul><li>The Head of Office approves the selection, or the Executive Director for senior posts</li></ul></div>
+    <div class="cell L1"><ul><li>Unsuccessful candidates get a notice from the system</li></ul></div>
+
+    <div class="lineLab"><span>Line of interaction</span></div>
+    <div class="lab L2 vis">Frontstage<small>What GSSC does that the user sees</small></div>
+    <div class="cell L2 vis"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team prepares the vacancy announcement in the Talent Management System</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team records a status and comments for every candidate it reviews</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team prepares panel packs, schedules interviews and keeps the evaluation papers</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team coordinates reference checks</li></ul></div>
+    <div class="cell L2 vis"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team coordinates with the GSSC onboarding team</li></ul></div>
+
+    <div class="lineLab"><span>Line of visibility</span></div>
+    <div class="lab L3 int">Backstage<small>What GSSC does out of sight</small></div>
+    <div class="cell L3 int"><ul><li>The team tracks queues, deadlines and dependencies, in shifts between 7am and 7pm Central European Time</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L3 int"><ul><li>The team screens candidates against minimum criteria and eligibility, and checks the quality of each longlist</li></ul></div>
+    <div class="cell L3 int"><ul><li>The team follows up on availability, missing documents and scheduling</li></ul></div>
+    <div class="cell L3 int"><ul><li>The team puts the selection papers together</li></ul></div>
+    <div class="cell L3 int"><ul><li>Background checks for international and national professional fixed-term posts</li><li>Medical clearance before placement</li><li>UNICEF checks compliance afterwards on a risk-based sample of cases</li></ul></div>
+    <div class="cell L3 int"><ul><li>The team closes the case and keeps a complete audit trail</li><li>An escalation matrix for unusual cases is planned</li></ul></div>
+
+    <div class="lineLab"><span>Line of internal interaction</span></div>
+    <div class="lab L4">Systems<small>Tools and records</small></div>
+    <div class="cell L4"><ul><li>Service Gateway, the GSSC's request system</li></ul></div>
+    <div class="cell L4"><ul><li>Talent Management System</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li>Recruitment systems and trackers</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li>SAP HR and the Talent Management System</li><li>A dashboard shows average recruitment time by type of requisition</li></ul></div>
+  </div></div>
+  <div class="notes">
+    <div class="box"><h3>Questions for the recruitment team</h3><ul>
+      <li>Where do cases wait longest, and who are they waiting for?</li>
+      <li>Where does the recruitment team's work end, and where do the business partner, the hiring office and the regional service centre take over?</li>
+      <li>UNICEF's 2025 evaluation of human resources management, cited by the Joint Inspection Unit, suggested simplifying the selection procedure. Which steps take the most effort today?</li>
+      <li>Can the systems show how long each step takes?</li>
+    </ul></div>
+    <div class="box src"><h3>Sources</h3><ul>
+      <li><a target="_blank" rel="noopener" href="https://www.unjiu.org/node/32748">Joint Inspection Unit, Review of staff recruitment policies and practices in the UN system (JIU/REP/2026/3)</a></li>
+      <li>GSSC job postings for recruitment and medical posts, 2024 to 2026</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ================= CONSULTANT CONTRACTS ================= -->
+<section class="panel" id="ics">
+  <p class="who">The GSSC's consultant contracts team is called Individual Consultant Services. Its users are contracting managers in country offices, supervisors and consultants. The team follows the Division of People and Culture's procedures for individual consultants.</p>
+  <p class="hint">Scroll the table sideways to see all seven steps →</p>
+  <div class="scroll"><div class="grid" style="--n:7">
+    <div class="ph"></div>
+    <div class="ph">1. Advertise and select</div>
+    <div class="ph">2. Eligibility</div>
+    <div class="ph">3. Review committee</div>
+    <div class="ph">4. Offer and contract</div>
+    <div class="ph">5. Deliver and invoice</div>
+    <div class="ph">6. Payment</div>
+    <div class="ph">7. Changes and closure</div>
+
+    <div class="lab L1">User<small>What the user does</small></div>
+    <div class="cell L1"><ul><li>The office advertises the consultancy, and consultants quote a fee for each deliverable</li><li>Consultants are paid per deliverable and work remotely by default</li></ul></div>
+    <div class="cell L1"><ul><li>The consultant fills in a self-declaration form</li></ul></div>
+    <div class="cell L1"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L1"><ul><li>The consultant gets an offer and a contract</li></ul></div>
+    <div class="cell L1"><ul><li>The consultant shares deliverables with the supervisor, then submits an invoice through the Consultant Portal</li><li>Invoices sent before the work is accepted are rejected</li></ul></div>
+    <div class="cell L1"><ul><li>The GSSC tells consultants to expect approval within five working days, then payment in the office's next payment run. Offices run payments two to five times a week</li></ul></div>
+    <div class="cell L1"><ul><li>To update a vendor record, or for anything the portal can't do, the consultant asks the focal point at their UNICEF office</li></ul></div>
+
+    <div class="lineLab"><span>Line of interaction</span></div>
+    <div class="lab L2 vis">Frontstage<small>What GSSC does that the user sees</small></div>
+    <div class="cell L2 vis"><ul><li>The team reviews terms of reference and supports sourcing and selection</li></ul></div>
+    <div class="cell L2 vis"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L2 vis"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team prepares offers and issues contracts</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The GSSC's consultant page gives guidance and invoice templates</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The Consultant Portal shows the progress of each invoice</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team processes requests to change a contract</li></ul></div>
+
+    <div class="lineLab"><span>Line of visibility</span></div>
+    <div class="lab L3 int">Backstage<small>What GSSC does out of sight</small></div>
+    <div class="cell L3 int"><ul><li>The team has service level targets and performance indicators, with shifts from Sunday to Friday</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li><li>Before this team existed, eligibility was checked by hand and through the self-declaration form</li></ul></div>
+    <div class="cell L3 int"><ul><li>Contracts and amendments above $100,000 (country and regional offices) or $150,000 (headquarters) go to the Contracts Review Committee</li></ul></div>
+    <div class="cell L3 int"><ul><li>The contract is set up as a purchase order, with a vendor record for the consultant</li></ul></div>
+    <div class="cell L3 int"><ul><li>The supervisor reviews the invoice after a first check</li></ul></div>
+    <div class="cell L3 int"><ul><li>Payment goes out in the office's regular payment run</li></ul></div>
+    <div class="cell L3 int"><ul><li>The team follows up expired contracts and closes them</li></ul></div>
+
+    <div class="lineLab"><span>Line of internal interaction</span></div>
+    <div class="lab L4">Systems<small>Tools and records</small></div>
+    <div class="cell L4"><ul><li>e-Recruitment system</li></ul></div>
+    <div class="cell L4"><ul><li>VISION, UNICEF's main business system</li><li>The Board of Auditors has recommended automated eligibility checks in VISION or other systems</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li>UNICEF Consultant Portal, being rolled out in phases</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li>Service Gateway</li></ul></div>
+  </div></div>
+  <div class="notes">
+    <div class="box"><h3>Questions for the consultant contracts team</h3><ul>
+      <li>Which eligibility checks are done by hand today?</li>
+      <li>How often are invoices rejected because they came before the work was accepted?</li>
+      <li>How do this team and the regional service centres share contracting work?</li>
+      <li>Who handles consultant invoices: this team or GSSC Finance?</li>
+    </ul></div>
+    <div class="box src"><h3>Sources</h3><ul>
+      <li><a target="_blank" rel="noopener" href="https://docs.un.org/en/A/81/5/Add.3">Board of Auditors, report on UNICEF for 2025 (A/81/5/Add.3)</a></li>
+      <li><a target="_blank" rel="noopener" href="https://www.unjiu.org/sites/www.unjiu.org/files/jiu_rep_2023_8_english_0.pdf">Joint Inspection Unit, Review of the use of non-staff personnel (JIU/REP/2023/8)</a></li>
+      <li><a target="_blank" rel="noopener" href="https://www.unicef.org/gssc/consultants">GSSC page for individual consultants</a></li>
+      <li>GSSC contracts job postings and UNICEF consultancy postings, 2026</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ================= TRAVEL ================= -->
+<section class="panel" id="trv">
+  <p class="who">The GSSC Travel Hub handles international travel for headquarters and regional offices. Its users are travellers, travel arrangers, approving officials and administrative focal points.</p>
+  <p class="hint">Scroll the table sideways to see all six steps →</p>
+  <div class="scroll"><div class="grid" style="--n:6">
+    <div class="ph"></div>
+    <div class="ph">1. Request</div>
+    <div class="ph">2. Approval</div>
+    <div class="ph">3. Check and post</div>
+    <div class="ph">4. Booking</div>
+    <div class="ph">5. Lump sums</div>
+    <div class="ph">6. Claim and settlement</div>
+
+    <div class="lab L1">User<small>What the user does</small></div>
+    <div class="cell L1"><ul><li>The traveller or a travel arranger requests travel for a mission, appointment, reassignment, separation, home leave, family visit or education grant</li></ul></div>
+    <div class="cell L1"><ul><li>The approving official signs off</li></ul></div>
+    <div class="cell L1"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L1"><ul><li>The traveller gets a ticket</li></ul></div>
+    <div class="cell L1"><ul><li>Home leave, family visit and education grant travel can be taken as a lump sum</li></ul></div>
+    <div class="cell L1"><ul><li>The traveller submits a claim after the trip</li></ul></div>
+
+    <div class="lineLab"><span>Line of interaction</span></div>
+    <div class="lab L2 vis">Frontstage<small>What GSSC does that the user sees</small></div>
+    <div class="cell L2 vis"><ul><li>Requests come in through the Service Gateway</li></ul></div>
+    <div class="cell L2 vis"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L2 vis"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The Travel Hub checks itineraries and ticket costs</li></ul></div>
+    <div class="cell L2 vis"><ul><li>GSSC reviews the lump-sum calculations</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The Travel Hub processes claims before final settlement, when needed</li></ul></div>
+
+    <div class="lineLab"><span>Line of visibility</span></div>
+    <div class="lab L3 int">Backstage<small>What GSSC does out of sight</small></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L3 int"><ul><li>GSSC reviews travel authorisations for compliance and approvals, and posts them</li><li>Medical clearance for duty travel, managed at the GSSC</li></ul></div>
+    <div class="cell L3 int"><ul><li>A new travel agency is in use, and its performance is to be measured</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+
+    <div class="lineLab"><span>Line of internal interaction</span></div>
+    <div class="lab L4">Systems<small>Tools and records</small></div>
+    <div class="cell L4"><ul><li>Service Gateway</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li>SAP</li></ul></div>
+    <div class="cell L4"><ul><li>The travel agency's booking systems</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li>Reports produced by the systems</li></ul></div>
+  </div></div>
+  <div class="notes">
+    <div class="box"><h3>Questions for the Travel Hub</h3><ul>
+      <li>How much travel work happens outside the Service Gateway?</li>
+      <li>Which travel guidance do people use, and where is it inconsistent, repeated or out of date?</li>
+      <li>What does the new agency report, and against which targets?</li>
+      <li>Is consultant travel in scope? Consultants claim travel through their invoice.</li>
+    </ul></div>
+    <div class="box src"><h3>Sources</h3><ul>
+      <li><a target="_blank" rel="noopener" href="https://open.unicef.org/download-annual-pdf?bac=1950&amp;region-name=HQ&amp;year=2025">UNICEF Global Shared Services Centre, Annual Report 2025</a></li>
+      <li><a target="_blank" rel="noopener" href="https://docs.un.org/en/A/79/5/Add.3">Board of Auditors, report on UNICEF for 2023 (A/79/5/Add.3)</a></li>
+      <li><a target="_blank" rel="noopener" href="https://www.unicef.org/gssc/consultants">GSSC page for individual consultants</a></li>
+      <li>GSSC travel job postings, 2023 to 2026</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ================= OFFBOARDING ================= -->
+<section class="panel" id="off">
+  <p class="who">The GSSC's offboarding team is part of Payroll and Offboarding. Its users are staff who are leaving and their offices. Its partners are the divisions of People and Culture, Financial and Administrative Management and Digital Impact, and country offices.</p>
+  <p class="hint">Scroll the table sideways to see all seven steps →</p>
+  <div class="scroll"><div class="grid" style="--n:7">
+    <div class="ph"></div>
+    <div class="ph">1. Case opened</div>
+    <div class="ph">2. What's owed</div>
+    <div class="ph">3. Clearance</div>
+    <div class="ph">4. Move home</div>
+    <div class="ph">5. Final pay</div>
+    <div class="ph">6. Pension</div>
+    <div class="ph">7. After-service insurance</div>
+
+    <div class="lab L1">User<small>What the user does</small></div>
+    <div class="cell L1"><ul><li>A staff member resigns, retires, or leaves at the end of a contract or for another reason</li></ul></div>
+    <div class="cell L1"><ul><li>Unused annual leave is paid out</li></ul></div>
+    <div class="cell L1"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L1"><ul><li>The leaver travels home</li></ul></div>
+    <div class="cell L1"><ul><li>The leaver gets their final pay</li></ul></div>
+    <div class="cell L1"><ul><li>The leaver sends their details to the Pension Fund through Member Self-Service</li><li>The Fund says it pays within 15 business days of receiving complete papers</li></ul></div>
+    <div class="cell L1"><ul><li>The leaver applies for after-service health and life insurance</li></ul></div>
+
+    <div class="lineLab"><span>Line of interaction</span></div>
+    <div class="lab L2 vis">Frontstage<small>What GSSC does that the user sees</small></div>
+    <div class="cell L2 vis"><ul><li>The team gives leavers guidance and answers to common questions</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team advises on entitlements</li></ul></div>
+    <div class="cell L2 vis"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The Travel Hub handles separation travel</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team makes the separation payments</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team processes the pension papers</li></ul></div>
+    <div class="cell L2 vis"><ul><li>The team handles applications for after-service health and life insurance</li></ul></div>
+
+    <div class="lineLab"><span>Line of visibility</span></div>
+    <div class="lab L3 int">Backstage<small>What GSSC does out of sight</small></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L3 int"><ul><li>GSSC staff interpret the rules and approve entitlements and benefits</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L3 int"><ul><li>Payroll runs outside the monthly cycle, corrections for past months and separation payments</li></ul></div>
+    <div class="cell L3 int"><ul><li>The separation notice (form PF.4) goes to the Pension Fund through an automated link, live at UNICEF since June 2025</li><li>The Fund sends monthly reports and a dashboard of missing papers</li></ul></div>
+    <div class="cell L3 int"><ul><li class="tbc">To confirm</li></ul></div>
+
+    <div class="lineLab"><span>Line of internal interaction</span></div>
+    <div class="lab L4">Systems<small>Tools and records</small></div>
+    <div class="cell L4"><ul><li>Personnel records in the Talent Management System and Service Gateway</li></ul></div>
+    <div class="cell L4"><ul><li>SAP HR</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+    <div class="cell L4"><ul><li>Service Gateway</li></ul></div>
+    <div class="cell L4"><ul><li>SAP payroll</li></ul></div>
+    <div class="cell L4"><ul><li>The automated link for separation notices, and the Fund's Member Self-Service</li></ul></div>
+    <div class="cell L4"><ul><li class="tbc">To confirm</li></ul></div>
+  </div></div>
+  <div class="notes">
+    <div class="box"><h3>Questions for the offboarding team</h3><ul>
+      <li>How long is it today from a leaver's last day until the Pension Fund has all their papers?</li>
+      <li>Where do leavers get stuck most: final pay, travel or pension?</li>
+      <li>When a leaver moves home, do they have to contact the offboarding and travel teams separately?</li>
+      <li>When do volumes peak in Payroll and Offboarding?</li>
+    </ul></div>
+    <div class="box src"><h3>Sources</h3><ul>
+      <li><a target="_blank" rel="noopener" href="https://docs.un.org/en/ST/SGB/2024/1">UN Staff Regulations and Rules (ST/SGB/2024/1), chapter IX</a></li>
+      <li><a target="_blank" rel="noopener" href="https://www.unjspf.org/for-clients/separation/">UN Joint Staff Pension Fund, separation page</a></li>
+      <li><a target="_blank" rel="noopener" href="https://www.unjspf.org/newsroom/unjspf-pension-administration-achieves-record-breaking-performance-in-2025/">UN Joint Staff Pension Fund, 2025 performance release</a></li>
+      <li><a target="_blank" rel="noopener" href="https://docs.un.org/en/A/79/9">Report of the UN Joint Staff Pension Board, 2024 (A/79/9)</a></li>
+      <li><a target="_blank" rel="noopener" href="https://docs.un.org/en/A/80/5/Add.3">Board of Auditors, report on UNICEF for 2024 (A/80/5/Add.3)</a></li>
+      <li>GSSC Payroll and Offboarding job postings, 2024 to 2026</li>
+    </ul></div>
+  </div>
+</section>
+
+  <p class="foot">October 2026</p>
+</div>
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on')});
+    b.setAttribute('aria-selected','true');
+    document.getElementById(b.dataset.p).classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
